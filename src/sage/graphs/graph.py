@@ -9269,7 +9269,7 @@ class Graph(GenericGraph):
         only non-adjacent vertex pairs ::
 
             sage: G = Graph([(0,1),(0,2),(1,2),(1,3),(3,5),(2,4),(2,3),(3,4),(4,5)])
-            sage: G.effective_resistance_matrix()                                       # needs sage.modules
+            sage: G.effective_resistance_matrix(nonedgesonly=True)                      # needs sage.modules
             [    0     0     0 49/55 59/55 15/11]
             [    0     0     0     0  9/11 59/55]
             [    0     0     0     0     0 49/55]
@@ -9280,7 +9280,7 @@ class Graph(GenericGraph):
         The same effective resistance matrix, this time including adjacent
         vertices ::
 
-            sage: G.effective_resistance_matrix(nonedgesonly=False)                     # needs sage.modules
+            sage: G.effective_resistance_matrix()                     # needs sage.modules
             [    0 34/55 34/55 49/55 59/55 15/11]
             [34/55     0 26/55 31/55  9/11 59/55]
             [34/55 26/55     0  5/11 31/55 49/55]
@@ -9292,7 +9292,7 @@ class Graph(GenericGraph):
         vertices counting only non-adjacent vertex pairs ::
 
             sage: H = Graph([(0,1),(0,2),(0,3),(0,4),(0,5),(0,6),(1,2),(2,3),(3,4),(4,5)])
-            sage: H.effective_resistance_matrix()                                       # needs sage.modules
+            sage: H.effective_resistance_matrix(nonedgesonly=True)                                       # needs sage.modules
             [    0     0     0     0     0     0     0]
             [    0     0     0 49/55 56/55   6/5 89/55]
             [    0     0     0     0   4/5 56/55 81/55]
@@ -9318,7 +9318,7 @@ class Graph(GenericGraph):
 
         TESTS::
 
-            sage: graphs.CompleteGraph(4).effective_resistance_matrix()                 # needs sage.modules
+            sage: graphs.CompleteGraph(4).effective_resistance_matrix(nonedgesonly=True)                 # needs sage.modules
             [0 0 0 0]
             [0 0 0 0]
             [0 0 0 0]
@@ -9335,7 +9335,7 @@ class Graph(GenericGraph):
             using allow_multiple_edges().
 
             sage: # needs sage.modules
-            sage: graphs.CompleteGraph(4).effective_resistance_matrix(nonedgesonly=False)
+            sage: graphs.CompleteGraph(4).effective_resistance_matrix()
             [  0 1/2 1/2 1/2]
             [1/2   0 1/2 1/2]
             [1/2 1/2   0 1/2]
@@ -9347,13 +9347,13 @@ class Graph(GenericGraph):
             ...
             ValueError: unable to compute effective resistance for an empty Graph object
             sage: G = Graph([(0,1),(1,2),(2,3),(3,0),(0,2)])
-            sage: G.effective_resistance_matrix()
+            sage: G.effective_resistance_matrix(nonedgesonly=True)
             [0 0 0 0]
             [0 0 0 1]
             [0 0 0 0]
             [0 1 0 0]
             sage: G = Graph([(0,1),(0,2),(0,3),(0,4),(0,5),(1,2),(2,3),(3,4),(4,5),(5,1)])
-            sage: r = G.effective_resistance_matrix(nonedgesonly=False)[0,3]
+            sage: r = G.effective_resistance_matrix()[0,3]
             sage: r == fibonacci(2*(5-3)+1)*fibonacci(2*3-1)/fibonacci(2*5)             # needs sage.libs.pari
             True
 
