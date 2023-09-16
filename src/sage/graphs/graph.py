@@ -9185,7 +9185,7 @@ class Graph(GenericGraph):
         return diff[0, 0]
 
     @doc_index("Leftovers")
-    def effective_resistance_matrix(self, vertices=None, nonedgesonly=True,
+    def effective_resistance_matrix(self, vertices=None, nonedgesonly=False,
                                     *, base_ring=None, **kwds):
         r"""
         Return a matrix whose (`i` , `j`) entry gives the effective resistance
@@ -9200,7 +9200,7 @@ class Graph(GenericGraph):
 
         INPUT:
 
-        - ``nonedgesonly`` -- boolean (default: ``True``); if ``True`` assign
+        - ``nonedgesonly`` -- boolean (default: ``False``); if ``True`` assign
           zero resistance to pairs of adjacent vertices.
 
         - ``vertices`` -- list (default: ``None``); the ordering of the
